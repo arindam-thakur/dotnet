@@ -1,0 +1,25 @@
+syntax = "proto3";
+import "google/api/annotations.proto";
+option csharp_namespace = "Employee.Service";
+
+package employee.service;
+
+// The greeting service definition.
+service EmployeeService {
+  // Sends a greeting
+  rpc GetEmployeeById (EmployeeRequest) returns (EmployeeResponse){
+	  option (google.api.http) = {
+      post: "/v1/employeeservice"
+      body: "*"
+    };
+  }
+}
+
+message EmployeeRequest {
+  int32 employee_id = 1;
+}
+
+message EmployeeResponse {
+  string employee_name = 1;
+  string employee_address = 2;
+}
